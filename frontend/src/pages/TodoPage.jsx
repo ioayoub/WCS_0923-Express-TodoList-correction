@@ -9,15 +9,18 @@ export default function TodoPage() {
   const todos = useLoaderData();
 
   const [isUpdated, setIsUpdated] = useState(false);
-  const [updatedTodos, setUpdateTodos] = useState(todos);
+  const [updatedTodos, setUpdatedTodos] = useState(todos);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/todos`)
-      .then((res) => setUpdateTodos(res.data))
-      .catch((e) => console.error(e));
-
-    setIsUpdated(false);
+    if (isUpdated) {
+      axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}/api/todos`)
+        .then((res) => {
+          setUpdatedTodos(res.data);
+          setIsUpdated(false);
+        })
+        .catch((e) => console.error(e));
+    }
   }, [isUpdated]);
 
   return (

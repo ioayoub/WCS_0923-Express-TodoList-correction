@@ -3,8 +3,9 @@ import Proptypes from "prop-types";
 
 export default function TodoList({ todos, setIsUpdated }) {
   const handleDelete = (id) => {
-    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/todos/${id}`);
-    setIsUpdated(true);
+    axios
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/api/todos/${id}`)
+      .then(() => setIsUpdated(true));
   };
 
   return (

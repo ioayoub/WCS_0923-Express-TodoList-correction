@@ -5,12 +5,13 @@ export default function TodoForm({ setIsUpdated }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/todos`, {
-      task: e.target[0].value,
-    });
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/todos`, {
+        task: e.target[0].value,
+      })
+      .then(() => setIsUpdated(true));
 
     e.target[0].value = "";
-    setIsUpdated(true);
   };
 
   return (
