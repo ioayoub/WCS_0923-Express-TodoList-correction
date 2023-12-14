@@ -3,3 +3,6 @@ node_modules
 .DS_Store
 .idea
 .vscode
+pnpm-lock.yaml
+backend/pnpm-lock.yaml
+frontend/pnpm-lock.yaml

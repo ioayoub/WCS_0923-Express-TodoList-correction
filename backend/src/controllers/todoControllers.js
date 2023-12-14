@@ -28,6 +28,18 @@ const add = async (req, res) => {
   }
 };
 
-const remove = () => {};
+const remove = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await tables.todo.destroy(id);
+
+    res.status(200).json({
+      message: `id ${id} is deleted.`,
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
 
 module.exports = { browse, read, edit, add, remove };

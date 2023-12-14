@@ -19,6 +19,14 @@ class TodoManager extends AbstractManager {
 
     return result.insertId;
   }
+
+  async destroy(id) {
+    const result = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id= ?`,
+      [id]
+    );
+    return result;
+  }
 }
 
 module.exports = TodoManager;

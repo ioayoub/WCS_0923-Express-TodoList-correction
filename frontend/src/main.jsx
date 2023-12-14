@@ -4,12 +4,18 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
+import TodoPage from "./pages/TodoPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <App />,
-    loader: () => fetch("http://localhost:8000/api/todos"),
+    children: [
+      {
+        path: "/todos",
+        element: <TodoPage />,
+        loader: () => fetch(`${import.meta.env.VITE_BACKEND_URL}/api/todos`),
+      },
+    ],
   },
 ]);
 
