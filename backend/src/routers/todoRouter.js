@@ -10,8 +10,12 @@ const {
   remove,
 } = require("../controllers/todoControllers");
 
+const { checkIfInputIsEmpty } = require("../middlewares/todoValidation");
+
 router.get("/", browse);
-router.post("/", add);
+
+router.post("/", checkIfInputIsEmpty, add);
+
 router.put("/:id", edit);
 router.delete("/:id", remove);
 

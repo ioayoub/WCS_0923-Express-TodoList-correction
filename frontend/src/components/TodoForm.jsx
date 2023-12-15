@@ -16,7 +16,7 @@ export default function TodoForm({ setIsUpdated }) {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input type="text" />
+      <input type="text" required />
       <button type="submit">Ajouter</button>
     </form>
   );
